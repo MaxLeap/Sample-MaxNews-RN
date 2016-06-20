@@ -10,18 +10,18 @@
 
 2. 更换 `/ios/MaxNews/AppDelegate.m` 文件中中的宏定义为步骤 1 中的 appid 和 clientkey：
 
-```objc
-#define MAXLEAP_APPID           @"your_app_id"
-#define MAXLEAP_CLIENTKEY       @"your_client_key"
-```
+	```objc
+	#define MAXLEAP_APPID           @"your_app_id"
+	#define MAXLEAP_CLIENTKEY       @"your_client_key"
+	```
 
-3. 分别替换 `/android/app/src/main/java/com/maxnews/MainActivity.java` 中的 MAXLEAP_APPID 和 MAXLEAP_CLIENTKEY 为步骤 1 中的 appid 和 clientkey
+3. 分别替换 `/android/app/src/main/java/com/maxnews/MainActivity.java` 中的 `MAXLEAP_APPID` 和 `MAXLEAP_CLIENTKEY` 为步骤 1 中的 appid 和 clientkey
 
-```
-@Override
-protected void onCreate(Bundle savedInstanceState) {
-    // 确保在 super.onCreate() 之前调用以下代码
-    maxLeap = new MaxLeap(this, "MAXLEAP_APPID", "MAXLEAP_CLIENTKEY");
-    super.onCreate(savedInstanceState);
-}
-```
+	```
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+	    // 确保在 super.onCreate() 之前调用以下代码
+	    maxLeap = new MaxLeap(this, "MAXLEAP_APPID", "MAXLEAP_CLIENTKEY");
+	    super.onCreate(savedInstanceState);
+	}
+	```
