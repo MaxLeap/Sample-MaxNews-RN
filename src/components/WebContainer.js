@@ -3,20 +3,12 @@
 import React, {Component, PropTypes} from 'react';
 import ReactNative, { WebView } from 'react-native';
 
-const script = '<script>window.location.hash = 1;document.title = document.height;</script>';
-
 class WebContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      height: props.height || 0
+      height: props.height || 100
     };
-  }
-
-  onNavigationStateChange(navState) {
-    this.setState({
-      height: navState.title
-    });
   }
 
   render() {
@@ -28,15 +20,14 @@ class WebContainer extends Component {
       ...props
     } = this.props;
 
-    html = autoHeight ? (html + script) : html
-
     return (
       <WebView ref={'webview'}
         {...props}
-        style={[style, (autoHeight ? {height: Number(this.state.height)} : {})]}
+        injectedJavaScript={'document.body.clientHeight'}
+        style={[style, (autoHeight ? {height: this.state.height} : {})]}
         scrollEnabled={autoHeight ? false : scrollEnabled}
         source={{html}}
-        onNavigationStateChange={this.onNavigationStateChange.bind(this)}/>
+        onLoad={e => this.setState({height: Number(e.nativeEvent.jsEvaluationValue)})}/>
     );
   }
 }
