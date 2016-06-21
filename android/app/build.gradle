@@ -120,6 +120,7 @@ android {
 }
 
 dependencies {
+    compile(name:'maxleap-helpcenter-react-native', ext:'aar')
     compile(name:'maxleap-react-native', ext:'aar')
     compile project(':react-native-image-picker')
     compile project(':react-native-vector-icons')

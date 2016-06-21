@@ -8,6 +8,7 @@
 
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-feature android:name="android.hardware.camera" android:required="false"/>
     <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
 
@@ -16,10 +17,14 @@
         android:targetSdkVersion="22" />
 
     <application
+        android:name=".App"
       android:allowBackup="true"
       android:label="@string/app_name"
       android:icon="@mipmap/ic_launcher"
       android:theme="@style/AppTheme">
+        <meta-data
+            android:name="ml_channel"
+            android:value="baidu"/>
       <activity
         android:name="com.maxnews.MainActivity"
         android:label="@string/app_name"
@@ -30,6 +35,8 @@
         </intent-filter>
       </activity>
       <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <activity android:name="com.maxleap.MLFaqListActivity" />
+        <activity android:name="com.maxleap.MLConversationActivity" />
     </application>
 
 </manifest>

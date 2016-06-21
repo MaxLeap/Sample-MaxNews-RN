@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.facebook.react.ReactActivity;
 import com.imagepicker.ImagePickerPackage;
 import com.maxleap.reactnative.MaxLeap;
+import com.maxleap.reactnative.MLHelpCenterReactPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.facebook.react.ReactPackage;
@@ -38,7 +39,7 @@ public class MainActivity extends ReactActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // 确保在 super.onCreate() 之前调用以下代码
-        maxLeap = new MaxLeap(this, "MAXLEAP_APPID", "MAXLEAP_CLIENTKEY");
+        maxLeap = new MaxLeap(this, App.MAXLEAP_APPID, App.MAXLEAP_CLIENTKEY);
         super.onCreate(savedInstanceState);
     }
 
@@ -53,7 +54,8 @@ public class MainActivity extends ReactActivity {
             new ImagePickerPackage(),
             new VectorIconsPackage(),
             new LinearGradientPackage(),
-            maxLeap.getReactPackage()
+            maxLeap.getReactPackage(),
+            new MLHelpCenterReactPackage()
         );
     }
 }
