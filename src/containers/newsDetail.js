@@ -6,8 +6,9 @@ import ReactNative, {
   Text,
   Image,
   ListView,
-  StyleSheet,
+  Platform,
   TextInput,
+  StyleSheet,
   TouchableHighlight
 } from 'react-native';
 
@@ -207,7 +208,7 @@ export default class NewsDetail extends Component {
           {btn}
         </View>
 
-        <KeyboardSpacer />
+        {(Platform.OS === 'ios') ? <KeyboardSpacer /> : null}
 
       </View>
     );
