@@ -20,15 +20,24 @@ class WebContainer extends Component {
       ...props
     } = this.props;
 
+    let script = 'document.title = document.body.clientHeight || document.height; window.location.hash = 1;'
+
     return (
       <WebView ref={'webview'}
         {...props}
-        injectedJavaScript={'document.body.clientHeight'}
         style={[style, (autoHeight ? {height: this.state.height} : {})]}
-        scrollEnabled={autoHeight ? false : scrollEnabled}
         source={{html}}
-        onLoad={e => this.setState({height: Number(e.nativeEvent.jsEvaluationValue)})}/>
-    );
+        scrollEnabled={autoHeight ? false : scrollEnabled}
+        javaScriptEnabled
+        domStorageEnabled
+        injectedJavaScript={script}
+        onNavigationStateChange={navState => {
+          let height = Number(navState.title);
+          if (height && height===height) {
+            this.setState({height});
+          }
+        }}/>
+      );
   }
 }
 
