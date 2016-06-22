@@ -122,19 +122,22 @@ class AccountCenter extends Component {
   _renderListHeader() {
     let avatarLink = this.props.currentUser && this.props.currentUser.get('iconUrl')
     let btnText = this.props.currentUser ? '账号信息' : '登录／注册'
+    let navbarHeight = this.props.navigationBarStyle.height
 
     return (
-      <LinearGradient
-        start={[1.0, 0.0]} end={[1.0, 1.0]}
-        colors={['#fd7723', '#faae75']}
-        style={styles.linearGradient}>
-        <Image style={styles.avatar} source={avatarLink ? {uri: avatarLink} : DefaultAvatar} />
-        <TouchableHighlight style={styles.button}
-                            underlayColor={'#faaf76'}
-                            onPress={e=>Actions.accountInfo()}>
-          <Text style={styles.buttonText}>{btnText}</Text>
-        </TouchableHighlight>
-      </LinearGradient>
+      <View style={{height: styles.linearGradient.height+300, marginTop: -300 + navbarHeight, backgroundColor: '#fd7723'}}>
+        <LinearGradient
+          start={[1.0, 0.0]} end={[1.0, 1.0]}
+          colors={['#fd7723', '#faae75']}
+          style={[styles.linearGradient, {marginTop: 300}]}>
+          <Image style={styles.avatar} source={avatarLink ? {uri: avatarLink} : DefaultAvatar} />
+          <TouchableHighlight style={styles.button}
+                              underlayColor={'#faaf76'}
+                              onPress={e=>Actions.accountInfo()}>
+            <Text style={styles.buttonText}>{btnText}</Text>
+          </TouchableHighlight>
+        </LinearGradient>
+      </View>
     )
   }
 
@@ -182,7 +185,7 @@ class AccountCenter extends Component {
 
   render() {
     return (
-      <ListView style={{flex: 1, marginTop: this.props.navigationBarStyle.height, backgroundColor: '#f5f5f5'}}
+      <ListView style={{flex: 1, backgroundColor: '#f5f5f5'}}
         renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
         dataSource={this.state.dataSource}
         renderHeader={this._renderListHeader.bind(this)}
