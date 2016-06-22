@@ -123,7 +123,7 @@ export default class AccountCenter extends React.Component {
 
     render() {
       return (
-        <ListView style={{flex: 1, marginTop: 64, backgroundColor: '#f5f5f5'}}
+        <ListView style={{flex: 1, marginTop: this.props.navigationBarStyle.height, backgroundColor: '#f5f5f5'}}
           renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
           dataSource={this.state.dataSource}
           renderSectionHeader={this._renderSectionHeader.bind(this)}

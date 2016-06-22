@@ -225,7 +225,7 @@ export default class AccountCenter extends React.Component {
     dataSource = dataSource.cloneWithRowsAndSections(this._rowDataList())
 
     return (
-      <ListView style={{flex: 1, marginTop: 64, backgroundColor: '#f5f5f5'}}
+      <ListView style={{flex: 1, marginTop: this.props.navigationBarStyle.height, backgroundColor: '#f5f5f5'}}
         renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
         dataSource={dataSource}
         renderSectionHeader={this._renderSectionHeader.bind(this)}

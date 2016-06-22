@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import ReactNative from 'react-native';
+import ReactNative, { Platform } from 'react-native';
 
 import RNRF, {
   Actions,
@@ -28,6 +28,9 @@ import personIcon from '../resources/images/btn_nav_personal_normal@2x.png';
 const styles = {
   navBar: {
     backgroundColor: '#fd7723',
+    borderBottomColor: 'transparent',
+
+    height: Platform.OS==='ios'?64:44
   },
   tabBar: {
     borderTopWidth: 0.5,
@@ -48,6 +51,13 @@ const styles = {
     color: 'white',
     fontSize: 18,
     fontWeight: 'normal'
+  },
+  title_andriod: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'normal',
+    marginTop: 0,
+    top: 10
   }
 };
 
@@ -55,7 +65,7 @@ export default class Launcher extends Component {
   commonNavConfig() {
     return {
       navigationBarStyle: styles.navBar,
-      titleStyle: styles.title,
+      titleStyle: Platform.OS==='ios' ? styles.title : styles.title_andriod,
       leftButtonIconStyle: styles.buttonIcon,
       leftButtonTextStyle: styles.buttonText,
       rightButtonTextStyle: styles.buttonText
@@ -77,7 +87,7 @@ export default class Launcher extends Component {
   render() {
     return (
       <Router {...this.props}>
-        <Scene key='news' {...this.commonNavConfig()}>
+        <Scene key='news' {...this.commonNavConfig()} passProps>
           <Scene key='newsList' component={NewsBoard} {...this.newsListNavConfig()} initial/>
           <Scene key='newsDetail' component={NewsDetail} title='新闻内容'/>
           <Scene key='account' component={AccountCenter} title='个人中心'/>

@@ -8,7 +8,6 @@ import ReactNative, {
   ListView,
   Platform,
   TextInput,
-  StyleSheet,
   TouchableHighlight
 } from 'react-native';
 
@@ -63,7 +62,11 @@ export default class NewsDetail extends Component {
     return (
       <View>
         <WebContainer ref={WEBVIEW_REF}
-          style={styles.webView}
+          style={{
+            flex: 1,
+            marginTop: this.props.navigationBarStyle.height,
+            backgroundColor: BGWASH
+          }}
           decelerationRate="normal"
           automaticallyAdjustContentInsets
           javaScriptEnabled
@@ -219,14 +222,6 @@ var WEBVIEW_REF = 'webview'
 var LISTVIEW_REF = 'listview'
 var TEXTINPUT_REF = 'textinput'
 var BGWASH = 'rgba(255,255,255,0.8)';
-
-var styles = StyleSheet.create({
-  webView: {
-    flex: 1,
-    marginTop: 64,
-    backgroundColor: BGWASH
-  }
-});
 
 function mapStateToProps(state) {
   return {

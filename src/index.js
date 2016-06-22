@@ -1,7 +1,7 @@
 'use strict';
 
 import React, { Component } from 'react';
-import ReactNative, { AppRegistry } from 'react-native';
+import ReactNative, { AppRegistry, StatusBar, Platform } from 'react-native';
 
 import { Provider } from 'react-redux';
 
@@ -14,6 +14,12 @@ import RNRF, {
 } from 'react-native-router-flux';
 
 class Main extends Component {
+  componentWillMount() {
+    if (Platform.OS === 'ios') {
+      StatusBar.setBarStyle('light-content', true);
+    }
+  }
+
   render() {
     return (
       <Provider store={store}>

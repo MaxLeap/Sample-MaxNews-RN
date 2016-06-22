@@ -23,7 +23,7 @@ export default class Favorite extends Component {
   render() {
     let items = this.props.collections.map(o => o.get('collectedNews'))
     return (
-      <NewsList style={{flex: 1, marginTop: 64}}
+      <NewsList style={{flex: 1, marginTop: this.props.navigationBarStyle.height}}
         items={items}/>
     );
   }

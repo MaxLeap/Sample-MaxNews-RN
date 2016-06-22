@@ -23,7 +23,7 @@ class AccountInfo extends Component {
     if (this.props.currentUser) {
       return <UserInfo {...this.props}/>
     } else {
-      return <NoUser />
+      return <NoUser {...this.props}/>
     }
   }
 }

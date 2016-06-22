@@ -33,16 +33,6 @@ class NewsBoard extends Component {
     })
   }
 
-  _categoryStyle() {
-    let topLayoutGuide = this.props.hideNavBar ? 20 : 64
-    return {
-      marginTop:topLayoutGuide,
-      padding: 10,
-      flex: 0,
-      backgroundColor: 'white'
-    }
-  }
-
   _categoryNames() {
     return this.props.state.categories.map((item) => {return item.get('categoryName')})
   }
@@ -99,6 +89,8 @@ class NewsBoard extends Component {
   }
 
   render() {
+    let marginTop = this.props.navigationBarStyle.height
+
     if (this.props.state.isFetching) {
       return <Spinner visible />
     }
@@ -112,8 +104,8 @@ class NewsBoard extends Component {
 
     let newsList = this._getNewsList()
     return (
-      <View style={{flex:1}}>
-        <CategoryView style={this._categoryStyle()}
+      <View style={{flex:1, marginTop}}>
+        <CategoryView style={{padding: 10, flex: 0, backgroundColor: 'white'}}
           selectedIndex={this._selectedIndex()}
           onSelectIndex={index=>this._onSelectCategoryAtIndex(index)}
           categories={this._categoryNames()}/>

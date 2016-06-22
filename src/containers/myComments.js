@@ -74,7 +74,7 @@ export default class MyComments extends React.Component {
 
   render() {
     return (
-      <ListView style={{flex: 1, marginTop: 64}}
+      <ListView style={{flex: 1, marginTop: this.props.navigationBarStyle.height}}
         renderScrollComponent={props => <RecyclerViewBackedScrollView {...props} />}
         dataSource={this.state.dataSource}
         renderRow={this._renderRow.bind(this)}

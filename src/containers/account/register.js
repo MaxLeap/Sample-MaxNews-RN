@@ -19,7 +19,7 @@ export default class AccountCenter extends React.Component {
 
   render() {
     return (
-      <ScrollView style={{flex: 1, marginTop: 64, backgroundColor:'#f5f5f5'}}>
+      <ScrollView style={{flex: 1, marginTop: this.props.navigationBarStyle.height, backgroundColor:'#f5f5f5'}}>
         <Register style={Platform.OS === 'android'?formStyle:undefined}
           onSuccess={user=> Actions.pop()}
           onFailure={e=>alert(e)}/>
